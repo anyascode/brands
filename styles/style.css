@@ -1,0 +1,145 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "TT Lakes";
+  src: url("../fonts/TTLakes-Regular.ttf");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.brands__title {
+  margin: 0;
+  font-family: "TT Lakes";
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #7e7e82;
+  background-image: linear-gradient(to right, #f8f8f8 25%, #ffffff 75%);
+  padding: 16px;
+}
+
+.swiper-pagination {
+  position: initial;
+  margin-top: 10px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #b5b6bc;
+}
+.swiper-pagination-bullet {
+  background-color: #dddddd;
+}
+
+.brands__container {
+  padding: 16px 0 38px 16px;
+  position: relative;
+  background-color: #f8f8f8;
+}
+
+.brands__container::after {
+  content: "";
+  width: 30px;
+  height: 100%;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(248, 248, 248, 1) 0%,
+    rgba(248, 248, 248, 1) 20%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 30;
+}
+
+.brands__item {
+  background-color: #ffffff;
+  padding: 16px;
+  border: solid #eaeaea 1px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brands__list {
+  margin: 0;
+  padding: 0;
+}
+
+.brands__button {
+  display: none;
+}
+
+.hide {
+  transform: rotate(180deg);
+}
+
+@media (min-width: 768px) {
+  .brands__title {
+    padding: 16px 24px;
+  }
+
+  .brands__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .brands__container::after {
+    display: none;
+  }
+
+  .brands__container {
+    padding: 24px;
+  }
+
+  .brands__button {
+    display: flex;
+    background: none;
+    border: none;
+    align-items: center;
+    gap: 17px;
+    font-size: 16px;
+    font-family: "TT Lakes";
+    cursor: pointer;
+  }
+
+  .brands__item:nth-child(n + 7) {
+    display: none;
+  }
+}
+
+@media (min-width: 1120px) {
+  .brands__title {
+    padding: 16px 32px;
+  }
+
+  .brands__container {
+    padding: 32px;
+  }
+
+  .brands__list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+
+  .brands__item:nth-child(7),
+  .brands__item:nth-child(8) {
+    display: flex;
+  }
+
+  .brands__item:nth-child(n + 9) {
+    display: none;
+  }
+}
