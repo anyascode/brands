@@ -1,49 +1,72 @@
+// document.addEventListener("DOMContentLoaded", function () {
+//   function handleSwiper() {
+//     var swiper = new Swiper(".swiper", {
+//       slidesPerView: 1.3,
+//       spaceBetween: 16,
+//       pagination: {
+//         el: ".swiper-pagination",
+//         clickable: true,
+//       },
+//       breakpoints: {
+//         768: {
+//           disabled: true,
+//         },
+//       },
+//       breakpointsBase: "window",
+//     });
+
+//     if (window.innerWidth < 768) {
+//       swiper.init();
+//     } else {
+//       if (swiper.initialized) {
+//         swiper.destroy();
+//       }
+//     }
+//   }
+//   handleSwiper();
+//   window.addEventListener("resize", handleSwiper);
+// });
 document.addEventListener("DOMContentLoaded", function () {
-  var swiper = new Swiper(".swiper", {
-    slidesPerView: 1.3,
-    spaceBetween: 16,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-  });
-
-  if (window.innerWidth < 768) {
-    swiper.init();
-  } else {
-    swiper.destroy();
+  let swiper;
+  function initSwiper() {
+    if (window.innerWidth < 768) {
+      if (!swiper) {
+        swiper = new Swiper(".swiper", {
+          slidesPerView: 1.3,
+          spaceBetween: 16,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+        });
+      }
+    } else {
+      if (swiper) {
+        swiper.destroy(true, true);
+        swiper = null;
+      }
+    }
   }
-});
+  initSwiper();
+  window.addEventListener("resize", initSwiper);
 
-let button = document.querySelector(".brands__button");
-let span = button.querySelector("span");
-let icon = button.querySelector("img");
-
-button.addEventListener("click", function () {
+  let button = document.querySelector(".brands__button");
+  let span = button.querySelector("span");
+  let icon = button.querySelector("img");
   let items = document.querySelectorAll(".brands__item");
-  if (window.innerWidth >= 768 && window.innerWidth < 1120) {
+  if (
+    window.matchMedia("(min-width: 768px)").matches &&
+    window.matchMedia("(max-width: 1119px)").matches
+  ) {
     for (let i = 6; i < items.length; i++) {
-      if (items[i].style.display === "none") {
-        items[i].style.display = "flex";
-        icon.src = "images/hide.svg";
-        span.textContent = "Скрыть";
-      } else {
-        items[i].style.display = "none";
-        span.textContent = "Показать все";
-        icon.src = "images/icon.svg";
-      }
+      items[i].classList.add("hide");
     }
-  } else if (window.innerWidth >= 1120) {
+  } else if (window.matchMedia("(min-width: 1120px)").matches) {
     for (let i = 8; i < items.length; i++) {
-      if (items[i].style.display === "none") {
-        items[i].style.display = "flex";
-        icon.src = "images/hide.svg";
-        span.textContent = "Скрыть";
-      } else {
-        items[i].style.display = "none";
-        span.textContent = "Показать все";
-        icon.src = "images/icon.svg";
-      }
+      items[i].classList.add("hide");
     }
   }
+  button.addEventListener("click", () => {
+    icon.classList.toggle("rotate");
+  });
 });

@@ -82,9 +82,16 @@ body {
 }
 
 .hide {
-  transform: rotate(180deg);
+  display: none;
 }
 
+.show {
+  display: flex;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
 @media (min-width: 768px) {
   .brands__title {
     padding: 16px 24px;
@@ -113,9 +120,11 @@ body {
     font-size: 16px;
     font-family: "TT Lakes";
     cursor: pointer;
+    color: #1b1c21;
+    margin-top: 24px;
   }
 
-  .brands__item:nth-child(n + 7) {
+  .swiper-pagination-bullet {
     display: none;
   }
 }
@@ -131,15 +140,7 @@ body {
 
   .brands__list {
     grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-  }
-
-  .brands__item:nth-child(7),
-  .brands__item:nth-child(8) {
-    display: flex;
-  }
-
-  .brands__item:nth-child(n + 9) {
-    display: none;
+    row-gap: 16px;
+    column-gap: 32px;
   }
 }
