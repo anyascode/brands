@@ -106,7 +106,8 @@ img {
   .brands__list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
+    column-gap: 24px;
+    row-gap: 16px;
   }
 
   .brands__container::after {
@@ -118,7 +119,7 @@ img {
   }
 
   .brands__list {
-    height: 170px;
+    height: 160px;
     overflow: hidden;
   }
 
